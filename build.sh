@@ -22,29 +22,11 @@ source clean.sh
 
 # Set up the environment, load modules, etc
 
-# These variables configure the build of Arbor, specifically which architecture to target
+# this will configure on an intel desktop system with OpenMPI installed
+source desktop.in
 
-# Set to ON if targeting NVIDIA GPU.
-# Arbor requires minimum CUDA 9
-arb_gpu=OFF
-
-# CPU architecture to target (still set this if targetting GPU)
-# This corresponds to the GNU equivalent -march argument, e.g.
-#   native, broadwell, haswell, skylake, knl, skylake-512
-arb_arch=native
-
-# Whether to use SIMD template library: set to ON if the target architecture supports
-# one of AVX, AVX2 or AVX512.
-arb_vectorize=ON
-
-# Set the MPI compiler wrappers
-# These should use either of
-#   * gcc >= 6.0
-#   * clang >= 4.0
-# Note that CUDA will restrict which gcc version can be used.
-
-export CC=`which mpicc`
-export CXX=`which mpicxx`
+# an example for configuring on Piz Daint GPU partition.
+#source daint-gpu.in
 
 # Construct the arguments that will be passed to Arbor's CMake.
 cmake_args="-DARB_WITH_MPI=ON -DARB_WITH_GPU=$arb_gpu -DARB_ARCH=$arb_arch -DARB_VECTORIZE=$arb_vectorize"
@@ -73,9 +55,9 @@ cmake "$repo_path" $cmake_args
 exit_on_error "configuring"
 
 #
-# make ring and bench benchmarks
+# make ring and benchmark-cell benchmarks
 #
 
-msg "building ring and bench benchmarks"
+msg "building ring and benchmark-cell benchmarks"
 make -j8 ring bench
 exit_on_error "building ring and bench benchmarks"

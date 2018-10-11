@@ -1,0 +1,23 @@
+# These variables configure the build of Arbor, specifically which architecture to target
+
+# Set to ON if targeting NVIDIA GPU.
+# Arbor requires minimum CUDA 9
+arb_gpu=OFF
+
+# CPU architecture to target (still set this if targetting GPU)
+# This corresponds to the GNU equivalent -march argument, e.g.
+#   native, broadwell, haswell, skylake, knl, skylake-512
+arb_arch=native
+
+# Whether to use SIMD template library: set to ON if the target architecture supports
+# one of AVX, AVX2 or AVX512.
+arb_vectorize=ON
+
+# Set the MPI compiler wrappers
+# These should use either of
+#   * gcc >= 6.0
+#   * clang >= 4.0
+# Note that CUDA will restrict which gcc version can be used.
+
+export CC=`which mpicc`
+export CXX=`which mpicxx`

@@ -1,0 +1,21 @@
+if [ "$CRAY_PRGENVCRAY" = loaded ]; then
+    module swap PrgEnv-cray PrgEnv-gnu
+fi
+module load daint-gpu
+module swap gcc/6.2.0
+module load cudatoolkit/9.0.103_3.7-6.0.4.1_2.1__g72b395b
+
+module load CMake/3.12.0
+
+# Daint has P100 GPUs
+arb_gpu=ON
+
+# Daint has Xeon Haswell CPUs
+arb_arch=haswell
+
+# Arbor's intrinsics support AVX2 on Haswell
+arb_vectorize=ON
+
+# Cray compiler wrappers for C and C++ are cc and CC respectively
+export CC=`which cc`
+export CXX=`which CC`
