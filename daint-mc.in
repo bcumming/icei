@@ -1,0 +1,22 @@
+if [ "$CRAY_PRGENVCRAY" = loaded ]; then
+    module swap PrgEnv-cray PrgEnv-gnu
+fi
+module load daint-mc
+module swap gcc/7.3.0
+
+module load CMake/3.12.0
+
+# Daint-mc has no GPUs
+arb_gpu=OFF
+
+# Daint has Xeon Broadwell CPUs
+arb_arch=broadwell
+
+# Arbor's intrinsics support AVX2 on Broadwell
+arb_vectorize=ON
+
+# Cray compiler wrappers for C and C++ are cc and CC respectively
+export CC=`which cc`
+export CXX=`which CC`
+
+module list

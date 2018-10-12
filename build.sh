@@ -23,10 +23,13 @@ source clean.sh
 # Set up the environment, load modules, etc
 
 # this will configure on an intel desktop system with OpenMPI installed
-source desktop.in
+#source desktop.in
 
 # an example for configuring on Piz Daint GPU partition.
 #source daint-gpu.in
+
+# an example for configuring on Piz Daint multicore partition.
+source daint-mc.in
 
 # Construct the arguments that will be passed to Arbor's CMake.
 cmake_args="-DARB_WITH_MPI=ON -DARB_WITH_GPU=$arb_gpu -DARB_ARCH=$arb_arch -DARB_VECTORIZE=$arb_vectorize"
