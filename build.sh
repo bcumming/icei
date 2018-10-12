@@ -46,6 +46,10 @@ msg "cloning repository from $git_repo"
 git clone "$git_repo" "$repo_path" --recursive
 exit_on_error "cloning repository"
 
+# check out version 0.1
+cd "$repo_path"
+git checkout "v0.1"
+
 #
 # configure build with CMake
 #
