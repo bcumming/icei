@@ -1,10 +1,10 @@
 {
-    "name": "ring_1_512_2",
-    "num-cells": 10,
-    "synapses": 1,
+    "name": "ring_baseline",
+    "num-cells": 10000,
+    "synapses": 10000,
     "min-delay": 10,
-    "duration": 1000,
-    "depth": 1,
+    "duration": 100,
+    "depth": 4,
     "branch-probs": [1, 0.5],
     "compartments": [20, 4],
     "lengths": [200, 40]

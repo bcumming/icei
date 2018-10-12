@@ -24,7 +24,7 @@ Not all nodes are equal, for example the following three nodes:
 3. Node on Summit: 6 V100 GPU + 2 socket Power 9 CPU.
 
 The ring benchmark uses a basic unit:
-* 8192 cells with:
+* 10000 cells with:
     * 15 branches and 150 compartments
     * 10,000 synapses
 * 
